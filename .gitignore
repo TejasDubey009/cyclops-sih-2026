@@ -4,6 +4,8 @@ node_modules/
 __pycache__/
 *.pyc
 .pytest_cache/
+.vscode/
+
 
 # Runtime scratch
 .run/
