@@ -35,10 +35,10 @@ if ($ApiInUse) {
     Write-Host "[INFO] Port $ApiPort is already active (Process ID: $($ApiInUse.OwningProcess)). Reusing existing backend." -ForegroundColor Yellow
 } else {
     Write-Host "[1/2] Starting CYCLOPS FastAPI backend on port $ApiPort..." -ForegroundColor Green
+    $env:PYTHONPATH = "src"
     $ApiProcess = Start-Process -FilePath $PythonExe `
         -ArgumentList "-m uvicorn api.main:app --host 127.0.0.1 --port $ApiPort" `
         -WorkingDirectory $WorkspaceRoot `
-        -Environment @{ "PYTHONPATH" = "src" } `
         -PassThru -WindowStyle Hidden
     Start-Sleep -Seconds 3
 }
